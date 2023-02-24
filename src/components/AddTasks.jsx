@@ -28,6 +28,7 @@ const AddTask = ({getTasks})=>{
         isCompleted:false,
       })
 
+      alert.success('Tarefa adicionada com sucesso!!!')
       await getTasks()
 
       setTask('')

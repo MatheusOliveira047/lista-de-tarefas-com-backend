@@ -11,7 +11,9 @@ const TaskItem = ({task}) => {
           ? 'checkbox-container-completed'
           : 'checkbox-container'
         }>
-          {task.description}
+          <span>
+            {task.description}
+          </span>
           <input 
             type="checkbox" 
             defaultChecked={task.isCompleted} 
