@@ -8,7 +8,7 @@ import CustomInput from './CustomInput'
 import CustomButton from './CustomButton'
 import {useAlert} from 'react-alert' 
 
-const AddTask = ()=>{
+const AddTask = ({getTasks})=>{
   const [task,setTask] = useState('')
 
   const alert = useAlert()
@@ -27,8 +27,12 @@ const AddTask = ()=>{
         description:task,
         isCompleted:false,
       })
+
+      await getTasks()
+
+      setTask('')
     } catch (error) {
-      
+      alert.error('Algo deu errado!!!!!!!!!!!!!')
     }
   }
 
