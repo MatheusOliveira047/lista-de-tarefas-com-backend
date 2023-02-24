@@ -1,8 +1,34 @@
+import axios from 'axios'
+import {useAlert} from 'react-alert' 
+import { useState } from 'react'
+
 import './TaskItem.scss'
 
+import ButtonLoading from './ButtonLoagind'
 import {AiFillDelete} from 'react-icons/ai'
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task,getTasks}) => {
+  const [loading,setLoading] = useState(false)
+  const alert = useAlert()
+
+
+  const handleDeleteTask = async (id)=>{
+    setLoading(true)
+    
+    try {
+        await axios.delete(`https://lista-de-tarefas-4vhh.onrender.com/api/tasks/delete/${id}`)
+
+        alert.success('Tarefa removida com sucesso !!!')
+        setLoading(false)
+        getTasks()
+      } catch (error) {
+        setLoading(false)
+        alert.error('ops ocorreu um erro, tente novamente mais tarde !!!')
+      }
+
+  }
+
+
   return (
     <div className="task-item-container">
       <div className="task-description">
@@ -22,9 +48,20 @@ const TaskItem = ({task}) => {
         </label>
       </div>
 
-      <div className="delete">
-        <AiFillDelete size={18} color="#f83a3a"/>
-      </div>
+      {
+        loading 
+        ?(
+          <ButtonLoading size={30}/>
+        )
+        :(
+          <div className="delete">
+            <AiFillDelete size={18} color="#f83a3a" onClick={()=>handleDeleteTask(task._id)}/>
+          </div>
+        )
+
+      }
+      
+
     </div>
   )
 }

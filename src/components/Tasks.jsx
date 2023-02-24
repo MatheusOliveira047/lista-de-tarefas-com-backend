@@ -10,10 +10,10 @@ const Tasks =()=>{
   const [tasks, setTasks] = useState([])
 
   const getTasks = async () => {
-    const response = await axios.get('https://fsc-task-manager-backend.herokuapp.com/tasks')
+    const response = await axios.get('https://lista-de-tarefas-4vhh.onrender.com/api/tasks/')
 
-    console.log(response.data)
-    setTasks(response.data)
+    console.log(response.data.tasks)
+    setTasks(response.data.tasks)
   }
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Tasks =()=>{
         <AddTask getTasks={getTasks}/>
         <div className="tasks-list">
           {tasks.filter(task=> task.isCompleted === false).map(lastTask=>(
-            <TaskItem task={lastTask}/>
+            <TaskItem getTasks={getTasks} task={lastTask}/>
           ))}
         </div>
       </div>
@@ -39,7 +39,7 @@ const Tasks =()=>{
         <h3>Tarefas concluídas</h3>
         <div className="tasks-list">
             {tasks.filter(task=>task.isCompleted).map(completedTask=>(
-            <TaskItem task={completedTask}/>
+            <TaskItem getTasks={getTasks} task={completedTask}/>
             ))}
         </div>
       </div>

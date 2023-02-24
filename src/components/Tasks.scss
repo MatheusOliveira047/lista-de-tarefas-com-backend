@@ -21,6 +21,7 @@
       overflow-y: hidden;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
 
       h3 {
           margin-bottom: 18px;
@@ -52,6 +53,7 @@
 
       .tasks-list {
           overflow-y: auto;
+          
           margin-top: 28px;
       }
   }
