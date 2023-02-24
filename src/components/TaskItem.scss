@@ -6,7 +6,7 @@
   @media (max-width: 768px) {
       max-width: 90%;
   }
-
+  
   .delete {
       padding-top: 1.5px;
       margin-left: 18px;
@@ -36,6 +36,7 @@
   @extend .checkbox-container;
   color: #9d9aad;
   text-decoration: line-through;
+  padding-right: 20px;
 }
 
 /* Hide the browser's default checkbox */
