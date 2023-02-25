@@ -48,6 +48,7 @@ const AddTask = ({getTasks})=>{
         label='Adicionar Tarefa ...' 
         value={task} 
         onChange={onChange}
+        onEnterPress={handleTaskAddition}
       />
 
       {
