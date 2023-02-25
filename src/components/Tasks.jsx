@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react'
 import axios from 'axios'
+import { useAlert } from 'react-alert'
 
 import './Tasks.scss'
 
@@ -9,11 +10,15 @@ import AddTask from './AddTasks'
 const Tasks =()=>{
   const [tasks, setTasks] = useState([])
 
-  const getTasks = async () => {
-    const response = await axios.get('https://lista-de-tarefas-4vhh.onrender.com/api/tasks/')
+  const alert = useAlert()
 
-    console.log(response.data.tasks)
-    setTasks(response.data.tasks)
+  const getTasks = async () => {
+    try {
+      const response = await axios.get('https://lista-de-tarefas-4vhh.onrender.com/api/tasks/')
+      setTasks(response.data.tasks)
+    } catch (_error) {
+      alert.error("Não foi possível recuperar as tarefas.")
+    }
   }
 
   useEffect(() => {

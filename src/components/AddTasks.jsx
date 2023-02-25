@@ -36,7 +36,7 @@ const AddTask = ({getTasks})=>{
       await getTasks()
       setTask('')
       setLoading(false)
-    } catch (error) {
+    } catch (_error) {
       alert.error('Algo deu errado!!!!!!!!!!!!!')
       setLoading(false)
     }

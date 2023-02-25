@@ -36,7 +36,7 @@ const TaskItem = ({task,getTasks}) => {
       await getTasks()
       alert.success('Tarefa concluida!!!')
 
-    } catch (error) {
+    } catch (_error) {
       alert.error('ops ocorreu um erro, tente novamente mais tarde !!!')
     }
   }
