@@ -32,10 +32,10 @@ const AddTask = ({getTasks})=>{
         isCompleted:false,
       })
 
-      alert.success('Tarefa adicionada com sucesso!!!')
-      await getTasks()
-      setTask('')
+      await setTask('')
       setLoading(false)
+      await alert.success('Tarefa adicionada com sucesso!!!')
+      await getTasks()
     } catch (_error) {
       alert.error('Algo deu errado!!!!!!!!!!!!!')
       setLoading(false)
