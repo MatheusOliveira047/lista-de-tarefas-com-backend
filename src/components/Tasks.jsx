@@ -17,13 +17,13 @@ const Tasks =()=>{
       const response = await axios.get('https://lista-de-tarefas-4vhh.onrender.com/api/tasks/')
       setTasks(response.data.tasks)
     } catch (_error) {
-      alert.error("Não foi possível recuperar as tarefas.")
+      alert.error('Não foi possível realizar a operação')
     }
   }
 
   useEffect(() => {
     getTasks()
-  }, [])
+  })
 
 
   return(
@@ -35,7 +35,7 @@ const Tasks =()=>{
         <AddTask getTasks={getTasks}/>
         <div className="tasks-list">
           {tasks.filter(task=> task.isCompleted === false).map(lastTask=>(
-            <TaskItem getTasks={getTasks} task={lastTask}/>
+            <TaskItem key={lastTask._id} getTasks={getTasks} task={lastTask}/>
           ))}
         </div>
       </div>
@@ -44,7 +44,7 @@ const Tasks =()=>{
         <h3>Tarefas concluídas</h3>
         <div className="tasks-list">
             {tasks.filter(task=>task.isCompleted).map(completedTask=>(
-            <TaskItem getTasks={getTasks} task={completedTask}/>
+            <TaskItem key={completedTask._id} getTasks={getTasks} task={completedTask}/>
             ))}
         </div>
       </div>
