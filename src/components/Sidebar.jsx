@@ -4,7 +4,8 @@ import logo from '../assets/images/logo.png'
 import CustomButtom from './CustomButton'
 
 const Sidebar = ()=>{
-  <div className="sidebar-container">
+  return(
+    <div className="sidebar-container">
     <div className="logo">
       <img src={logo} alt="Full Stask club"/>
     </div>
@@ -14,6 +15,7 @@ const Sidebar = ()=>{
       </CustomButtom>
     </div>
   </div>
+  )
 }
 
 export default Sidebar

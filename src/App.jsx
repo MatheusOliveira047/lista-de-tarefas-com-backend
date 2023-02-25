@@ -1,13 +1,16 @@
 import Tasks from './components/Tasks';
+import Sidebar from './components/Sidebar';
 
-import './App.css';
+import './App.scss';
 
 function App() {
 
   return (
-    <>
+    <div className="app-container">
+      <Sidebar/>
       <Tasks />
-    </>
+    </div>
+    
   );
 }
 
