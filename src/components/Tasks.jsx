@@ -1,4 +1,4 @@
-import { useState,useEffect, useMemo } from 'react'
+import { useState,useEffect, useMemo, useCallback } from 'react'
 import axios from 'axios'
 import { useAlert } from 'react-alert'
 
@@ -12,14 +12,14 @@ const Tasks =()=>{
 
   const alert = useAlert()
 
-  const getTasks = async () => {
+  const getTasks = useCallback(async () => {
     try {
       const response = await axios.get('https://lista-de-tarefas-4vhh.onrender.com/api/tasks/')
       setTasks(response.data.tasks)
     } catch (_error) {
       alert.error('Não foi possível realizar a operação')
     }
-  }
+  },[alert])
 
   const lastTasks = useMemo(()=>{
     return tasks.filter(task => task.isCompleted === false)
@@ -31,7 +31,7 @@ const Tasks =()=>{
 
   useEffect(() => {
     getTasks()
-  })
+  },[getTasks])
 
 
   return(
